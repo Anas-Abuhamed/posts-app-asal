@@ -1,11 +1,19 @@
-import { Outlet, useFetcher } from "react-router";
+import { Outlet, redirect, useFetcher } from "react-router";
 import { postPost } from "~/api/postApi";
 import Dashboard from "~/components/Dashboard"
 import { getCookieFromRequest } from "~/utils/cookies";
 const action = async ({ request }) => {
-    const userId = getCookieFromRequest(request, "userId");
     try {
+        const userId = getCookieFromRequest(request, "userId");
         const formData = await request.formData();
+        const logout = formData.get("logout");
+        if (logout) {
+            return redirect("/", {
+                headers: {
+                    "Set-Cookie": "userId=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+                }
+            });
+        }
         const title = formData.get("title");
         const body = formData.get("body");
         const newPost = { id: crypto.randomUUID(), userId, title, body };

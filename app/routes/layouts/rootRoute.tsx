@@ -9,8 +9,6 @@ const rootRoute = () => {
 
 const ErrorBoundary = () => {
     const error = useRouteError();
-
-    // React Router has a special type for loader/action thrown responses
     if (isRouteErrorResponse(error)) {
         return (
             <div style={{ padding: "2rem" }}>

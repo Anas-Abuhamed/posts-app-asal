@@ -16,13 +16,12 @@ const action = async ({ params }) => {
         return { isDeleted: false }
     }
 }
-// show every post
 const post = () => {
     const { post, comments } = useLoaderData();
     const fetcher = useFetcher();
     let isDeleted = fetcher.data?.isDeleted;
     if (isDeleted) {
-        return <h2>Post deleted successfully</h2>;
+        return <h2 className="success">Post deleted successfully</h2>;
     }
     return (
         <Post post={post} comments={comments} fetcher={fetcher} />

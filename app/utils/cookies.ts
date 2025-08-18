@@ -10,12 +10,12 @@ export function getCookieFromRequest(request, name) {
   return value ? decodeURIComponent(value) : null;
 }
 
-export function getCookieFromClientSide (name) {
-  // const regex = new RegExp(`(^|;)\\s*${name}=([^;]*)`);
-  // const match = document.cookie.match(regex);
-  // console.log(match)
-  // return match ? match[2] : null;
+export function getCookieFromClientSide(name) {
   const cookies = document.cookie.split(";").map(c => c.trim());
   const cookie = cookies.find(c => c.startsWith(name + "="));
   return cookie ? cookie.split("=")[1] : null;
+}
+
+export function removeCookie(name) {
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/dashboard;`;
 }

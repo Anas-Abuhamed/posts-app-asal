@@ -7,7 +7,6 @@ const loader = async ({ request }) => {
   const posts = await getPosts();
   return { userId, posts };
 }
-// Show all posts except user's own posts
 const posts = () => {
   const { userId, posts } = useLoaderData();
   let filteredPosts = posts ? posts : [];

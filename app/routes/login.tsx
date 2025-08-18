@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, redirect, useFetcher } from "react-router";
 import { getUsers } from "~/api/getApi";
+import Login from "~/components/Login";
 const action = async ({ request }) => {
     try {
         const formData = await request.formData();
@@ -20,23 +21,11 @@ const action = async ({ request }) => {
         console.error(err)
     }
 }
-const Login = () => {
-    const [email, setEmail] = useState("");
+const login = () => {
     const fetcher = useFetcher();
-    const message = fetcher.data?.message;
     return (
-        <>
-            <h2>Login</h2>
-            <br />
-            <fetcher.Form method="post">
-                <input className="login-input" type="email" placeholder="email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-                {message && <p className="text-red-500">{message}</p>}
-                <br />
-                <button className="login-button" type="submit">Login</button>
-            </fetcher.Form>
-            <Link to="/register" className="text-blue-500 hover:underline">Register</Link>
-        </>
+        <Login fetcher={fetcher} />
     )
 }
 export { action };
-export default Login;
+export default login;
