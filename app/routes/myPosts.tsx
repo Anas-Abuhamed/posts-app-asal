@@ -1,4 +1,4 @@
-import { redirect, useLoaderData } from "react-router";
+import { useLoaderData } from "react-router";
 import { getPosts } from "~/api/getApi";
 import Posts from "~/components/Posts";
 import { getCookieFromRequest } from "~/utils/cookies"
@@ -8,7 +8,6 @@ const loader = async ({ request }) => {
     const posts = await getPosts();
     return { userId, posts }
 }
-// Show only user's own posts
 const MyPosts = () => {
     const { userId, posts } = useLoaderData();
     let filteredPosts = posts ? posts : [];

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { redirect, useFetcher } from "react-router";
+import { Link, redirect, useFetcher } from "react-router";
 import { getUsers } from "~/api/getApi";
 const action = async ({ request }) => {
     try {
@@ -34,6 +34,7 @@ const Login = () => {
                 <br />
                 <button className="login-button" type="submit">Login</button>
             </fetcher.Form>
+            <Link to="/register" className="text-blue-500 hover:underline">Register</Link>
         </>
     )
 }

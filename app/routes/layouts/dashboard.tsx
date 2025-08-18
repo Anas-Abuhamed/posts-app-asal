@@ -1,6 +1,3 @@
-// Route for error ({message})
-// form registration, formik & yup (read about patterns)
-import { useState } from "react";
 import { Outlet, useFetcher } from "react-router";
 import { postPost } from "~/api/postApi";
 import Dashboard from "~/components/Dashboard"

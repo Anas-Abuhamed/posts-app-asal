@@ -85,3 +85,7 @@ button:disabled {
   background-color: gray;
   cursor: not-allowed;
 }
+
+.register-button {
+  margin-top: 20px;
+}

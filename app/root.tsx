@@ -7,6 +7,10 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+// validation form: date, select, number, language (form converter with i18n, convert the design with library (sth like rtl))
+
+// before with react-router
+
 import type { Route } from "./+types/root";
 import "./app.css";
 
