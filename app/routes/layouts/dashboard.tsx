@@ -1,6 +1,7 @@
+import { lazy, Suspense } from "react";
 import { Outlet, redirect, useFetcher } from "react-router";
 import { postPost } from "~/api/postApi";
-import Dashboard from "~/components/Dashboard"
+const Dashboard = lazy(() => import("~/components/Dashboard"));
 import { getCookieFromRequest } from "~/utils/cookies";
 const action = async ({ request }) => {
     try {
@@ -27,10 +28,10 @@ const action = async ({ request }) => {
 const dashboard = () => {
     const fetcher = useFetcher();
     return (
-        <>
+        <Suspense fallback={<p>Loading...</p>}>
             <Dashboard fetcher={fetcher} />
             <Outlet />
-        </>
+        </Suspense>
     )
 }
 
